@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conjigul Community</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <h1>Conjigul Community Hub</h1>
+      <p>Share pictures, add friends, and keep everything connected in one place.</p>
+      <div class="actions">
+        <a class="button" href="#add-picture">Add a Picture</a>
+        <a class="button button--secondary" href="#add-friend">Add a Friend</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section id="add-picture" class="card">
+      <div class="card__header">
+        <h2>Add a Picture</h2>
+        <p>Select an image, add a title, and it will appear in your gallery.</p>
+      </div>
+      <form id="add-picture-form" class="form" autocomplete="off">
+        <label class="form__field">
+          <span>Title</span>
+          <input type="text" id="picture-title" name="title" placeholder="Sunset at the beach" required>
+        </label>
+        <label class="form__field">
+          <span>Choose Image</span>
+          <input type="file" id="picture-file" name="file" accept="image/*" required>
+        </label>
+        <div class="form__actions">
+          <button type="submit" class="button">Save Picture</button>
+          <button type="reset" class="button button--ghost">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="gallery" class="card">
+      <div class="card__header">
+        <h2>Gallery</h2>
+        <p>All pictures you have added appear below.</p>
+      </div>
+      <div id="gallery-grid" class="grid"></div>
+    </section>
+
+    <section id="add-friend" class="card">
+      <div class="card__header">
+        <h2>Add a Friend</h2>
+        <p>Keep track of who matters most and how to reach them.</p>
+      </div>
+      <form id="add-friend-form" class="form" autocomplete="off">
+        <label class="form__field">
+          <span>Name</span>
+          <input type="text" id="friend-name" name="name" placeholder="Jordan Doe" required>
+        </label>
+        <label class="form__field">
+          <span>Contact (email or phone)</span>
+          <input type="text" id="friend-contact" name="contact" placeholder="jordan@example.com" required>
+        </label>
+        <label class="form__field">
+          <span>Notes</span>
+          <textarea id="friend-notes" name="notes" placeholder="Met at the conference..."></textarea>
+        </label>
+        <div class="form__actions">
+          <button type="submit" class="button button--secondary">Save Friend</button>
+          <button type="reset" class="button button--ghost">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="friends" class="card">
+      <div class="card__header">
+        <h2>Friends List</h2>
+        <p>Everyone you have added shows up here.</p>
+      </div>
+      <div id="friend-list" class="list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>All links and buttons are ready to use. Save, view, and manage your community with ease.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
