@@ -1,0 +1,26 @@
+{
+  "name": "conjigul",
+  "version": "1.0.0",
+  "description": "Conjigul community hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/health-check.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelhughes2501/conjigul.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/michaelhughes2501/conjigul/issues"
+  },
+  "homepage": "https://github.com/michaelhughes2501/conjigul#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1"
+  }
+}
