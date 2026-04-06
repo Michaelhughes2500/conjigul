@@ -1,8 +1,10 @@
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
+app.use(helmet());
 const PORT = process.env.PORT || 3000;
 const publicDir = path.join(__dirname, 'public');
 
