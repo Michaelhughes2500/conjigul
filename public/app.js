@@ -53,12 +53,12 @@ function renderGallery() {
     const tile = document.createElement('article');
     tile.className = 'tile';
     tile.innerHTML = `
-      <img src="${item.url}" alt="${item.title}">
+      <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title)}">
       <div class="tile__body">
-        <p class="tile__title">${item.title}</p>
+        <p class="tile__title">${escapeHtml(item.title)}</p>
         <p class="tile__meta">Added ${formatDate(item.createdAt)}</p>
       </div>
-      <button class="button button--ghost" data-id="${item.id}" data-type="picture">Remove</button>
+      <button class="button button--ghost" data-id="${escapeHtml(item.id)}" data-type="picture">Remove</button>
     `;
     galleryGrid.appendChild(tile);
   });
@@ -75,13 +75,22 @@ function renderFriends() {
     const chip = document.createElement('article');
     chip.className = 'chip';
     chip.innerHTML = `
-      <p class="chip__title">${friend.name}</p>
-      <p class="chip__meta">${friend.contact} • Added ${formatDate(friend.createdAt)}</p>
-      <p class="chip__notes">${friend.notes || 'No notes yet.'}</p>
-      <button class="button button--ghost" data-id="${friend.id}" data-type="friend">Remove</button>
+      <p class="chip__title">${escapeHtml(friend.name)}</p>
+      <p class="chip__meta">${escapeHtml(friend.contact)} • Added ${formatDate(friend.createdAt)}</p>
+      <p class="chip__notes">${escapeHtml(friend.notes || 'No notes yet.')}</p>
+      <button class="button button--ghost" data-id="${escapeHtml(friend.id)}" data-type="friend">Remove</button>
     `;
     friendList.appendChild(chip);
   });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function fileToDataUrl(file) {
