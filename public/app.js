@@ -31,8 +31,16 @@ function loadStored(key) {
 }
 
 function saveState() {
-  localStorage.setItem(pictureKey, JSON.stringify(state.pictures));
-  localStorage.setItem(friendsKey, JSON.stringify(state.friends));
+  try {
+    localStorage.setItem(pictureKey, JSON.stringify(state.pictures));
+    localStorage.setItem(friendsKey, JSON.stringify(state.friends));
+  } catch (err) {
+    if (err instanceof DOMException && err.name === 'QuotaExceededError') {
+      alert('Storage full — try removing some pictures to free space.');
+    } else {
+      throw err;
+    }
+  }
 }
 
 function formatDate(value) {
@@ -108,16 +116,21 @@ pictureForm.addEventListener('submit', async (event) => {
   const file = pictureForm.querySelector('#picture-file').files[0];
   if (!title || !file) return;
 
-  const url = await fileToDataUrl(file);
-  state.pictures.unshift({
-    id: uniqueId(),
-    title,
-    url,
-    createdAt: Date.now(),
-  });
-  saveState();
-  renderGallery();
-  pictureForm.reset();
+  try {
+    const url = await fileToDataUrl(file);
+    state.pictures.unshift({
+      id: uniqueId(),
+      title,
+      url,
+      createdAt: Date.now(),
+    });
+    saveState();
+    renderGallery();
+    pictureForm.reset();
+  } catch (err) {
+    alert('Could not load the image. Please try a different file.');
+    console.error(err);
+  }
 });
 
 friendForm.addEventListener('submit', (event) => {
