@@ -10,7 +10,7 @@ const publicDir = path.join(__dirname, 'public');
 
 const limiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 100,
+  limit: 100,
 });
 
 app.use(limiter);
