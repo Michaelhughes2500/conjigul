@@ -1,7 +1,7 @@
 {
   "name": "conjigul",
   "version": "1.0.0",
-  "description": "Conjigul community hub",
+  "description": "Reconnect Directory reentry support hub",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -19,8 +19,5 @@
     "url": "https://github.com/michaelhughes2501/conjigul/issues"
   },
   "homepage": "https://github.com/michaelhughes2501/conjigul#readme",
-  "dependencies": {
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.3.1"
-  }
+  "dependencies": {}
 }

@@ -3,89 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conjigul Community</title>
+  <meta name="theme-color" content="#214f3f">
+  <meta name="description" content="Reconnect Directory helps people returning from incarceration or supervision build trusted circles, find resources, and stay free.">
+  <title>Reconnect Directory | Conjigul</title>
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="hero">
-    <div class="hero__content">
-      <h1>Conjigul Community Hub</h1>
-      <p>Share pictures, add friends, and keep everything connected in one place.</p>
-      <div class="actions">
-        <a class="button" href="#add-picture">Add a Picture</a>
-        <a class="button button--secondary" href="#add-friend">Add a Friend</a>
-      </div>
-    </div>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Reconnect Directory home">
+      <span class="brand__mark">R</span>
+      <span>
+        <strong>Reconnect</strong>
+        <small>Directory</small>
+      </span>
+    </a>
+    <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" data-action="toggle-nav">
+      <i data-lucide="menu"></i>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="programs.html">AI Programs</a>
+    </nav>
   </header>
 
-  <main class="layout">
-    <section id="add-picture" class="card">
-      <div class="card__header">
-        <h2>Add a Picture</h2>
-        <p>Select an image, add a title, and it will appear in your gallery.</p>
-      </div>
-      <form id="add-picture-form" class="form" autocomplete="off">
-        <label class="form__field">
-          <span>Title</span>
-          <input type="text" id="picture-title" name="title" placeholder="Sunset at the beach" required>
-        </label>
-        <label class="form__field">
-          <span>Choose Image</span>
-          <input type="file" id="picture-file" name="file" accept="image/*" required>
-        </label>
-        <div class="form__actions">
-          <button type="submit" class="button">Save Picture</button>
-          <button type="reset" class="button button--ghost">Reset</button>
+  <main id="main">
+    <section class="hero hero--home">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Second chances need a real network</p>
+          <h1>Reconnect Directory</h1>
+          <p class="hero__lead">Build trusted circles, find second-chance resources, and keep a daily freedom plan that works on desktop, iOS, and Android browsers.</p>
+          <form id="home-search-form" class="hero-search" autocomplete="off">
+            <label class="sr-only" for="home-search">Search resources</label>
+            <i data-lucide="search"></i>
+            <input id="home-search" type="search" placeholder="Search housing, jobs, legal help, mentors">
+            <button class="button button--dark" type="submit">
+              <i data-lucide="arrow-right"></i>
+              <span>Search</span>
+            </button>
+          </form>
+          <div class="hero__actions">
+            <a class="button" href="directory.html">
+              <i data-lucide="map"></i>
+              <span>Open Directory</span>
+            </a>
+            <a class="button button--secondary" href="programs.html">
+              <i data-lucide="sparkles"></i>
+              <span>Build My Plan</span>
+            </a>
+          </div>
         </div>
-      </form>
+
+        <aside class="command-panel" aria-label="Personal reentry dashboard">
+          <div class="panel-heading">
+            <span class="panel-icon"><i data-lucide="shield-check"></i></span>
+            <div>
+              <h2>Today</h2>
+              <p id="today-summary">Set up your profile to personalize the directory.</p>
+            </div>
+          </div>
+          <form id="profile-form" class="stacked-form" autocomplete="off">
+            <label>
+              <span>Name or handle</span>
+              <input id="profile-name" name="name" type="text" placeholder="M. Jordan">
+            </label>
+            <label>
+              <span>City or county</span>
+              <input id="profile-city" name="city" type="text" placeholder="Denver, CO">
+            </label>
+            <label>
+              <span>Main goal</span>
+              <select id="profile-goal" name="goal">
+                <option value="Housing">Stable housing</option>
+                <option value="Work">Work and income</option>
+                <option value="Supervision">Supervision success</option>
+                <option value="Family">Family reconnection</option>
+                <option value="Health">Health and recovery</option>
+              </select>
+            </label>
+            <button class="button button--full" type="submit">
+              <i data-lucide="save"></i>
+              <span>Save Profile</span>
+            </button>
+          </form>
+        </aside>
+      </div>
     </section>
 
-    <section id="gallery" class="card">
-      <div class="card__header">
-        <h2>Gallery</h2>
-        <p>All pictures you have added appear below.</p>
+    <section class="metrics-band" aria-label="Progress overview">
+      <div class="metric">
+        <strong id="stat-people">0</strong>
+        <span>trusted people</span>
       </div>
-      <div id="gallery-grid" class="grid"></div>
+      <div class="metric">
+        <strong id="stat-resources">0</strong>
+        <span>saved resources</span>
+      </div>
+      <div class="metric">
+        <strong id="stat-streak">0</strong>
+        <span>check-in streak</span>
+      </div>
+      <div class="metric">
+        <strong id="stat-plan">0</strong>
+        <span>plan steps</span>
+      </div>
     </section>
 
-    <section id="add-friend" class="card">
-      <div class="card__header">
-        <h2>Add a Friend</h2>
-        <p>Keep track of who matters most and how to reach them.</p>
-      </div>
-      <form id="add-friend-form" class="form" autocomplete="off">
-        <label class="form__field">
-          <span>Name</span>
-          <input type="text" id="friend-name" name="name" placeholder="Jordan Doe" required>
-        </label>
-        <label class="form__field">
-          <span>Contact (email or phone)</span>
-          <input type="text" id="friend-contact" name="contact" placeholder="jordan@example.com" required>
-        </label>
-        <label class="form__field">
-          <span>Notes</span>
-          <textarea id="friend-notes" name="notes" placeholder="Met at the conference..."></textarea>
-        </label>
-        <div class="form__actions">
-          <button type="submit" class="button button--secondary">Save Friend</button>
-          <button type="reset" class="button button--ghost">Reset</button>
+    <section class="section two-column">
+      <div>
+        <div class="section__heading">
+          <p class="eyebrow">Quick connection</p>
+          <h2>Add someone to your circle</h2>
         </div>
-      </form>
+        <form id="quick-connection-form" class="feature-form" autocomplete="off">
+          <label>
+            <span>Name</span>
+            <input id="quick-name" name="name" type="text" placeholder="Peer mentor, cousin, sponsor" required>
+          </label>
+          <label>
+            <span>Role</span>
+            <select id="quick-role" name="role">
+              <option value="Peer mentor">Peer mentor</option>
+              <option value="Family">Family</option>
+              <option value="Case manager">Case manager</option>
+              <option value="Employer lead">Employer lead</option>
+              <option value="Recovery support">Recovery support</option>
+            </select>
+          </label>
+          <label>
+            <span>Contact</span>
+            <input id="quick-contact" name="contact" type="text" placeholder="phone, email, or note" required>
+          </label>
+          <button class="button" type="submit">
+            <i data-lucide="user-plus"></i>
+            <span>Add to Directory</span>
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <div class="section__heading">
+          <p class="eyebrow">Daily freedom loop</p>
+          <h2>Log a check-in</h2>
+        </div>
+        <form id="home-checkin-form" class="feature-form" autocomplete="off">
+          <fieldset class="chip-field">
+            <legend>Mood</legend>
+            <label><input type="radio" name="mood" value="steady" checked><span>Steady</span></label>
+            <label><input type="radio" name="mood" value="stressed"><span>Stressed</span></label>
+            <label><input type="radio" name="mood" value="hopeful"><span>Hopeful</span></label>
+          </fieldset>
+          <label>
+            <span>One move that protects tomorrow</span>
+            <input id="home-next-move" name="nextMove" type="text" placeholder="Call mentor at 6, send job application, attend meeting">
+          </label>
+          <button class="button button--secondary" type="submit">
+            <i data-lucide="check-circle-2"></i>
+            <span>Log Check-In</span>
+          </button>
+        </form>
+      </div>
     </section>
 
-    <section id="friends" class="card">
-      <div class="card__header">
-        <h2>Friends List</h2>
-        <p>Everyone you have added shows up here.</p>
+    <section class="section">
+      <div class="section__heading section__heading--inline">
+        <div>
+          <p class="eyebrow">Resource pulse</p>
+          <h2>Matches from the directory</h2>
+        </div>
+        <a class="text-link" href="directory.html">View all resources</a>
       </div>
-      <div id="friend-list" class="list"></div>
+      <div id="home-resource-results" class="resource-grid"></div>
+    </section>
+
+    <section class="section split-band">
+      <div>
+        <p class="eyebrow">Trusted circle</p>
+        <h2>Your reconnect list</h2>
+        <p>People stay free with people. Keep your strongest contacts visible and current.</p>
+      </div>
+      <div id="home-circle-list" class="circle-list"></div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>All links and buttons are ready to use. Save, view, and manage your community with ease.</p>
+    <p>Reconnect Directory stores your demo data in this browser. Replace starter resources with verified local providers before public launch.</p>
   </footer>
 
-  <script src="app.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

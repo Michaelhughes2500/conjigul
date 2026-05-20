@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#214f3f">
+  <meta name="description" content="AI-style reentry programs for planning, check-ins, outreach messages, and freedom goals.">
+  <title>AI Programs | Reconnect Directory</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="programs">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Reconnect Directory home">
+      <span class="brand__mark">R</span>
+      <span>
+        <strong>Reconnect</strong>
+        <small>Directory</small>
+      </span>
+    </a>
+    <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" data-action="toggle-nav">
+      <i data-lucide="menu"></i>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="programs.html">AI Programs</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-head page-head--programs">
+      <div>
+        <p class="eyebrow">AI programs</p>
+        <h1>Personal copilots for the next right move</h1>
+      </div>
+      <div class="program-signal">
+        <span><i data-lucide="lock"></i> Local demo data</span>
+        <span><i data-lucide="shield"></i> Supportive nudges</span>
+        <span><i data-lucide="heart-handshake"></i> Human-first planning</span>
+      </div>
+    </section>
+
+    <section class="program-layout">
+      <div class="program-main">
+        <section class="tool-surface">
+          <div class="section__heading">
+            <p class="eyebrow">Reentry navigator</p>
+            <h2>Generate a freedom plan</h2>
+          </div>
+          <form id="plan-form" class="feature-form" autocomplete="off">
+            <fieldset class="chip-field chip-field--grid">
+              <legend>Goals</legend>
+              <label><input type="checkbox" name="goals" value="Housing" checked><span>Housing</span></label>
+              <label><input type="checkbox" name="goals" value="Work"><span>Work</span></label>
+              <label><input type="checkbox" name="goals" value="Legal"><span>Legal</span></label>
+              <label><input type="checkbox" name="goals" value="Health"><span>Health</span></label>
+              <label><input type="checkbox" name="goals" value="Family"><span>Family</span></label>
+              <label><input type="checkbox" name="goals" value="Supervision"><span>Supervision</span></label>
+            </fieldset>
+            <div class="form-grid">
+              <label>
+                <span>Biggest barrier</span>
+                <select id="plan-barrier" name="barrier">
+                  <option value="no-id">No ID or documents</option>
+                  <option value="no-transport">Transportation</option>
+                  <option value="background-check">Background check</option>
+                  <option value="curfew">Curfew or reporting</option>
+                  <option value="stress">Stress or triggers</option>
+                  <option value="money">Money gap</option>
+                </select>
+              </label>
+              <label>
+                <span>Time window</span>
+                <select id="plan-time" name="time">
+                  <option value="24 hours">24 hours</option>
+                  <option value="3 days">3 days</option>
+                  <option value="7 days">7 days</option>
+                  <option value="30 days">30 days</option>
+                </select>
+              </label>
+              <label>
+                <span>Support level</span>
+                <select id="plan-support" name="support">
+                  <option value="solo">Mostly solo</option>
+                  <option value="mentor">Mentor available</option>
+                  <option value="family">Family available</option>
+                  <option value="case-manager">Case manager available</option>
+                </select>
+              </label>
+            </div>
+            <button class="button" type="submit">
+              <i data-lucide="wand-sparkles"></i>
+              <span>Generate Plan</span>
+            </button>
+          </form>
+          <div id="plan-output" class="plan-output"></div>
+        </section>
+
+        <section class="tool-surface">
+          <div class="section__heading">
+            <p class="eyebrow">Outreach composer</p>
+            <h2>Draft a clean message</h2>
+          </div>
+          <form id="message-form" class="feature-form" autocomplete="off">
+            <div class="form-grid">
+              <label>
+                <span>Recipient</span>
+                <select id="message-recipient" name="recipient">
+                  <option value="mentor">Mentor</option>
+                  <option value="family">Family</option>
+                  <option value="provider">Provider</option>
+                  <option value="employer">Employer</option>
+                  <option value="supervision">Supervision officer</option>
+                </select>
+              </label>
+              <label>
+                <span>Tone</span>
+                <select id="message-tone" name="tone">
+                  <option value="direct">Direct</option>
+                  <option value="warm">Warm</option>
+                  <option value="accountable">Accountable</option>
+                </select>
+              </label>
+              <label>
+                <span>Deadline</span>
+                <input id="message-deadline" name="deadline" type="text" placeholder="Friday morning">
+              </label>
+            </div>
+            <label>
+              <span>What you need</span>
+              <textarea id="message-ask" name="ask" placeholder="A ride to intake, job lead, document help, a check-in call"></textarea>
+            </label>
+            <button class="button button--secondary" type="submit">
+              <i data-lucide="message-square-text"></i>
+              <span>Draft Message</span>
+            </button>
+          </form>
+          <textarea id="message-output" class="message-output" readonly placeholder="Your drafted message will appear here."></textarea>
+        </section>
+      </div>
+
+      <aside class="program-rail">
+        <section class="tool-surface">
+          <div class="section__heading">
+            <p class="eyebrow">Freedom coach</p>
+            <h2>Risk interrupt</h2>
+          </div>
+          <form id="loop-form" class="stacked-form" autocomplete="off">
+            <label>
+              <span>Trigger</span>
+              <select id="loop-trigger" name="trigger">
+                <option value="old-crew">Old crew calling</option>
+                <option value="anger">Anger rising</option>
+                <option value="substance">Substance urge</option>
+                <option value="money">Fast money pressure</option>
+                <option value="lonely">Lonely or isolated</option>
+              </select>
+            </label>
+            <label>
+              <span>Safe next move</span>
+              <input id="loop-move" name="move" type="text" placeholder="Leave location, call mentor, attend meeting">
+            </label>
+            <button class="button button--full" type="submit">
+              <i data-lucide="activity"></i>
+              <span>Save Interrupt</span>
+            </button>
+          </form>
+          <div id="risk-board" class="risk-board"></div>
+        </section>
+
+        <section class="tool-surface">
+          <div class="section__heading">
+            <p class="eyebrow">Momentum</p>
+            <h2>Recent check-ins</h2>
+          </div>
+          <div id="checkin-feed" class="checkin-feed"></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>These tools support planning and communication. They do not replace legal, medical, clinical, or supervision advice.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

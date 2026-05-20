@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#214f3f">
+  <meta name="description" content="Search reentry resources, save providers, and build a trusted reconnect circle.">
+  <title>Directory | Reconnect Directory</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="directory">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Reconnect Directory home">
+      <span class="brand__mark">R</span>
+      <span>
+        <strong>Reconnect</strong>
+        <small>Directory</small>
+      </span>
+    </a>
+    <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" data-action="toggle-nav">
+      <i data-lucide="menu"></i>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="programs.html">AI Programs</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-head page-head--directory">
+      <div>
+        <p class="eyebrow">Reconnect Directory</p>
+        <h1>People, providers, and second-chance resources in one place</h1>
+      </div>
+      <form id="directory-filters" class="filter-bar" autocomplete="off">
+        <label>
+          <span class="sr-only">Search directory</span>
+          <i data-lucide="search"></i>
+          <input id="resource-search" type="search" placeholder="Search housing, jobs, legal help, transport">
+        </label>
+        <label>
+          <span class="sr-only">Category</span>
+          <select id="resource-category">
+            <option value="All">All categories</option>
+            <option value="Housing">Housing</option>
+            <option value="Work">Work</option>
+            <option value="Legal">Legal</option>
+            <option value="Health">Health</option>
+            <option value="Family">Family</option>
+            <option value="Supervision">Supervision</option>
+            <option value="Any Need">Any need</option>
+          </select>
+        </label>
+        <label>
+          <span class="sr-only">Location</span>
+          <input id="resource-location" type="text" placeholder="City, county, or online">
+        </label>
+      </form>
+    </section>
+
+    <section class="directory-shell">
+      <aside class="side-rail">
+        <div class="rail-block">
+          <div class="section__heading">
+            <p class="eyebrow">Add contact</p>
+            <h2>Trusted person</h2>
+          </div>
+          <form id="person-form" class="stacked-form" autocomplete="off">
+            <label>
+              <span>Name</span>
+              <input id="person-name" name="name" type="text" placeholder="Name or handle" required>
+            </label>
+            <label>
+              <span>Role</span>
+              <select id="person-role" name="role">
+                <option value="Peer mentor">Peer mentor</option>
+                <option value="Family">Family</option>
+                <option value="Case manager">Case manager</option>
+                <option value="Supervision officer">Supervision officer</option>
+                <option value="Employer lead">Employer lead</option>
+                <option value="Recovery support">Recovery support</option>
+              </select>
+            </label>
+            <label>
+              <span>Contact</span>
+              <input id="person-contact" name="contact" type="text" placeholder="phone, email, or safe contact method" required>
+            </label>
+            <label>
+              <span>City or county</span>
+              <input id="person-city" name="city" type="text" placeholder="Denver, CO">
+            </label>
+            <label>
+              <span>Notes</span>
+              <textarea id="person-notes" name="notes" placeholder="Best time to call, boundaries, support type"></textarea>
+            </label>
+            <button class="button button--full" type="submit">
+              <i data-lucide="user-plus"></i>
+              <span>Save Person</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="rail-block">
+          <div class="section__heading">
+            <p class="eyebrow">Add provider</p>
+            <h2>Local resource</h2>
+          </div>
+          <form id="custom-resource-form" class="stacked-form" autocomplete="off">
+            <label>
+              <span>Resource name</span>
+              <input id="custom-resource-name" name="name" type="text" placeholder="County reentry office" required>
+            </label>
+            <label>
+              <span>Category</span>
+              <select id="custom-resource-category" name="category">
+                <option value="Housing">Housing</option>
+                <option value="Work">Work</option>
+                <option value="Legal">Legal</option>
+                <option value="Health">Health</option>
+                <option value="Family">Family</option>
+                <option value="Supervision">Supervision</option>
+                <option value="Any Need">Any need</option>
+              </select>
+            </label>
+            <label>
+              <span>Location</span>
+              <input id="custom-resource-city" name="city" type="text" placeholder="Online or city">
+            </label>
+            <label>
+              <span>Contact or link</span>
+              <input id="custom-resource-contact" name="contact" type="text" placeholder="website, phone, email">
+            </label>
+            <button class="button button--full button--secondary" type="submit">
+              <i data-lucide="plus"></i>
+              <span>Add Resource</span>
+            </button>
+          </form>
+        </div>
+      </aside>
+
+      <div class="directory-main">
+        <section>
+          <div class="section__heading section__heading--inline">
+            <div>
+              <p class="eyebrow">Resources</p>
+              <h2><span id="resource-count">0</span> matches</h2>
+            </div>
+            <button class="button button--ghost" type="button" data-action="clear-filters">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Clear</span>
+            </button>
+          </div>
+          <div id="resource-grid" class="resource-grid"></div>
+        </section>
+
+        <section>
+          <div class="section__heading section__heading--inline">
+            <div>
+              <p class="eyebrow">People</p>
+              <h2>Trusted reconnect circle</h2>
+            </div>
+            <label class="compact-search">
+              <i data-lucide="search"></i>
+              <input id="people-search" type="search" placeholder="Search people">
+            </label>
+          </div>
+          <div id="people-list" class="people-list"></div>
+        </section>
+
+        <section>
+          <div class="section__heading">
+            <p class="eyebrow">Saved</p>
+            <h2>Resource short list</h2>
+          </div>
+          <div id="saved-resources-list" class="saved-list"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Use this as a verified directory framework. Confirm eligibility, hours, and local rules before sending people to a provider.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

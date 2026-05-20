@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Reconnect Directory icon">
+  <rect width="512" height="512" rx="96" fill="#214f3f"/>
+  <path d="M136 258c0-66 53-119 119-119h39c46 0 83 37 83 83 0 45-37 82-83 82h-34l64 69h-70l-86-93v-32h123c16 0 29-12 29-28s-13-29-29-29h-38c-36 0-65 30-65 67 0 36 29 65 65 65h31v52h-29c-66 0-119-52-119-117z" fill="#ffffff"/>
+  <path d="M143 392h226" stroke="#d8a727" stroke-width="30" stroke-linecap="round"/>
+</svg>

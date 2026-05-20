@@ -1,0 +1,33 @@
+{
+  "name": "Reconnect Directory",
+  "short_name": "Reconnect",
+  "description": "A reentry support directory for trusted circles, resources, and freedom planning.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f3",
+  "theme_color": "#214f3f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Directory",
+      "short_name": "Directory",
+      "url": "directory.html",
+      "description": "Search resources and trusted contacts."
+    },
+    {
+      "name": "AI Programs",
+      "short_name": "Programs",
+      "url": "programs.html",
+      "description": "Build plans, outreach messages, and check-ins."
+    }
+  ]
+}

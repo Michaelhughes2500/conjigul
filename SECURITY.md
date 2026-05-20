@@ -1,21 +1,13 @@
 # Security Policy
 
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+Reconnect Directory currently stores demo profile, contact, check-in, and resource data in the user's browser through `localStorage`. Do not treat the demo as a secure case-management system until authentication, encryption, access control, audit logging, and data-retention rules are added.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Report vulnerabilities through the repository issue tracker or private project contact. Include the affected page, browser, reproduction steps, and whether any personal data could be exposed.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+## Data Safety Notes
+
+- Verify local providers before publishing a live resource directory.
+- Avoid storing sensitive supervision, legal, medical, or safety-plan details in browser storage for production use.
+- The planning tools support communication and organization; they do not replace legal, medical, clinical, or supervision advice.
