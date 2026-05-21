@@ -14,6 +14,7 @@
       <div class="actions">
         <a class="button" href="#add-picture">Add a Picture</a>
         <a class="button button--secondary" href="#add-friend">Add a Friend</a>
+        <button id="theme-toggle" class="button button--ghost">Light</button>
       </div>
     </div>
   </header>
@@ -45,6 +46,7 @@
         <h2>Gallery</h2>
         <p>All pictures you have added appear below.</p>
       </div>
+      <input type="search" id="picture-search" class="search-input" placeholder="Search pictures..." aria-label="Search pictures">
       <div id="gallery-grid" class="grid"></div>
     </section>
 
@@ -78,6 +80,7 @@
         <h2>Friends List</h2>
         <p>Everyone you have added shows up here.</p>
       </div>
+      <input type="search" id="friend-search" class="search-input" placeholder="Search friends..." aria-label="Search friends">
       <div id="friend-list" class="list"></div>
     </section>
   </main>

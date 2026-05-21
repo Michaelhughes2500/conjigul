@@ -239,3 +239,102 @@ a {
     font-size: 26px;
   }
 }
+
+/* ── Light mode ──────────────────────────────────────────────────────────── */
+
+body.light {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --card: #f1f5f9;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  background: #f8fafc;
+}
+
+body.light .hero {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(59, 130, 246, 0.05));
+}
+
+/* ── Search input ────────────────────────────────────────────────────────── */
+
+.search-input {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin: 10px 0 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent-soft);
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+}
+
+/* ── Small button variant ────────────────────────────────────────────────── */
+
+.button--sm {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+/* ── Tile actions row ────────────────────────────────────────────────────── */
+
+.tile__actions {
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Chip actions row ────────────────────────────────────────────────────── */
+
+.chip__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ── Drag and drop ───────────────────────────────────────────────────────── */
+
+.tile[draggable="true"],
+.chip[draggable="true"] {
+  cursor: grab;
+}
+
+.tile.dragging,
+.chip.dragging {
+  opacity: 0.3;
+}
+
+.tile.drag-over,
+.chip.drag-over {
+  outline: 2px dashed var(--accent-soft);
+  outline-offset: 3px;
+}
+
+/* ── Inline edit forms ───────────────────────────────────────────────────── */
+
+.tile__img--editing {
+  opacity: 0.35;
+}
+
+.edit-form {
+  display: grid;
+  gap: 8px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
