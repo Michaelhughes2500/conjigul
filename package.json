@@ -1,1 +1,30 @@
-ewogICJuYW1lIjogImNvbmppZ3VsIiwKICAidmVyc2lvbiI6ICIxLjAuMCIsCiAgImRlc2NyaXB0aW9uIjogIkNvbmppZ3VsIGNvbW11bml0eSBodWIiLAogICJtYWluIjogInNlcnZlci5qcyIsCiAgInNjcmlwdHMiOiB7CiAgICAic3RhcnQiOiAibm9kZSBzZXJ2ZXIuanMiLAogICAgInRlc3QiOiAibm9kZSBzY3JpcHRzL2hlYWx0aC1jaGVjay5qcyIKICB9LAogICJyZXBvc2l0b3J5IjogewogICAgInR5cGUiOiAiZ2l0IiwKICAgICJ1cmwiOiAiZ2l0K2h0dHBzOi8vZ2l0aHViLmNvbS9taWNoYWVsaHVnaGVzMjUwMC9jb25qaWd1bC5naXQiCiAgfSwKICAia2V5d29yZHMiOiBbXSwKICAiYXV0aG9yIjogIiIsCiAgImxpY2Vuc2UiOiAiSVNDIiwKICAidHlwZSI6ICJjb21tb25qcyIsCiAgImJ1Z3MiOiB7CiAgICAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9taWNoYWVsaHVnaGVzMjUwMC9jb25qaWd1bC9pc3N1ZXMiCiAgfSwKICAiaG9tZXBhZ2UiOiAiaHR0cHM6Ly9naXRodWIuY29tL21pY2hhZWxodWdoZXMyNTAwL2NvbmppZ3VsI3JlYWRtZSIsCiAgImRlcGVuZGVuY2llcyI6IHsKICAgICJleHByZXNzIjogIl41LjIuMSIsCiAgICAiZXhwcmVzcy1yYXRlLWxpbWl0IjogIl44LjUuMiIsCiAgICAiaGVsbWV0IjogIl44LjIuMCIKICB9LAogICJvdmVycmlkZXMiOiB7CiAgICAicGF0aC10by1yZWdleHBAPD04LjQuMCI6ICI4LjQuMCIKICB9Cn0K
+{
+  "name": "conjigul",
+  "version": "1.0.0",
+  "description": "Conjigul community hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/health-check.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelhughes2500/conjigul.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/michaelhughes2500/conjigul/issues"
+  },
+  "homepage": "https://github.com/michaelhughes2500/conjigul#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0"
+  },
+  "overrides": {
+    "path-to-regexp@<=8.4.0": "8.4.0"
+  }
+}
