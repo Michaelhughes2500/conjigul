@@ -43,7 +43,7 @@ Set `PORT` and `NODE_ENV` via `.env` (see `.env.example`).
 
 - Keep all routes mounted **before** the SPA fallback (`app.use((_req,res)=>...)`).
 - Don't disable `helmet` defaults without a clear reason.
-- Tune rate limits via `windowMs` / `max` in `server.js`; don't remove the limiter.
+- Tune rate limits via `windowMs` / `limit` in `server.js` (express-rate-limit v7+); don't remove the limiter.
 - Always escape user input before injecting into the DOM — see `escapeHtml()` in `public/app.js` (XSS prevention).
 - Prefer `crypto.randomUUID()` (with the existing timestamp fallback) for new IDs — see `uniqueId()`.
 - Public assets must be cache-friendly (hashed filenames where possible).
