@@ -81,7 +81,7 @@ function renderGallery() {
   galleryGrid.innerHTML = "";
 
   const filtered = state.pictures.filter((item) =>
-    String(item.title ?? "").toLowerCase().includes(searchTerm.toLowerCase()),
+    String(item?.title ?? "").toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   if (!filtered.length) {
