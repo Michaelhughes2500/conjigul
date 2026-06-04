@@ -68,10 +68,12 @@ function saveState() {
 }
 
 function formatDate(value) {
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return "Unknown date";
   return new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
-  }).format(new Date(value));
+  }).format(d);
 }
 
 function renderGallery() {
@@ -79,7 +81,7 @@ function renderGallery() {
   galleryGrid.innerHTML = "";
 
   const filtered = state.pictures.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    String(item?.title ?? "").toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   if (!filtered.length) {

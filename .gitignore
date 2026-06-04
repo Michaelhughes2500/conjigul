@@ -1,7 +1,7 @@
 node_modules
 npm-debug.log*
 *.log
-
+.env
 
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md

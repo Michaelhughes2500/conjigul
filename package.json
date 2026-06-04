@@ -4,7 +4,8 @@
   "description": "Conjigul community hub",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
     "test": "node scripts/health-check.js"
   },
   "repository": {
