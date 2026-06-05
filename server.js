@@ -11,16 +11,7 @@ const publicDir = path.join(__dirname, "public");
 // when the app runs behind Nginx / a cloud load balancer.
 app.set("trust proxy", 1);
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "img-src": ["'self'", "data:"],
-      },
-    },
-  }),
-);
+app.use(helmet());
 
 // Health endpoint is exempt from rate-limiting so load-balancer probes
 // always get a timely 200, even when other routes are being throttled.
