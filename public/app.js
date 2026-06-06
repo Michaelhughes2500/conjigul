@@ -153,12 +153,13 @@ async function handlePictureSubmit(event) {
   const file = pictureForm.querySelector("#picture-file").files[0];
   if (!title || !file) return;
 
+  if (!file.type.startsWith("image/")) {
+    alert("Only image files are allowed.");
+    return;
+  }
+
   try {
     const url = await fileToDataUrl(file);
-    if (!url.startsWith("data:image/")) {
-      alert("Only image files are allowed.");
-      return;
-    }
     state.pictures.unshift({
       id: uniqueId(),
       title,
