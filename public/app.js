@@ -155,6 +155,10 @@ async function handlePictureSubmit(event) {
 
   try {
     const url = await fileToDataUrl(file);
+    if (!url.startsWith("data:image/")) {
+      alert("Only image files are allowed.");
+      return;
+    }
     state.pictures.unshift({
       id: uniqueId(),
       title,
