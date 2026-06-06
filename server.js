@@ -31,6 +31,15 @@ app.use((_req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
+// eslint-disable-next-line no-unused-vars
+app.use((err, _req, res, next) => {
+  console.error(err);
+  if (res.headersSent) return next(err);
+  const rawStatus = err.status ?? err.statusCode;
+  const statusCode = Number.isInteger(rawStatus) && rawStatus >= 100 && rawStatus < 600 ? rawStatus : 500;
+  res.status(statusCode).json({ error: "Internal Server Error" });
+});
+
 app.listen(PORT, () => {
   console.log(`conjigul running at http://localhost:${PORT}`);
 });
