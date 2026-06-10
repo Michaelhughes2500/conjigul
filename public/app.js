@@ -93,10 +93,15 @@ function renderGallery() {
   }
 
   filtered.forEach((item) => {
+    const safeUrl =
+      typeof item.url === "string" &&
+      /^data:image\/(jpeg|png|gif|webp);base64,/.test(item.url)
+        ? item.url
+        : "";
     const tile = document.createElement("article");
     tile.className = "tile";
     tile.innerHTML = `
-      <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title)}">
+      <img src="${safeUrl}" alt="${escapeHtml(item.title)}">
       <div class="tile__body">
         <p class="tile__title">${escapeHtml(item.title)}</p>
         <p class="tile__meta">Added ${formatDate(item.createdAt)}</p>
@@ -153,8 +158,8 @@ async function handlePictureSubmit(event) {
   const file = pictureForm.querySelector("#picture-file").files[0];
   if (!title || !file) return;
 
-  if (!file.type.startsWith("image/")) {
-    alert("Only image files are allowed.");
+  if (!file.type.startsWith("image/") || file.type === "image/svg+xml") {
+    alert("Only raster image files (JPEG, PNG, GIF, WebP) are allowed.");
     return;
   }
 
