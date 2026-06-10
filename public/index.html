@@ -3,71 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conjigul Community</title>
+  <title>Conjigul &mdash; Your Community Hub</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
     <div class="hero__content">
-      <h1>Conjigul Community Hub</h1>
-      <p>Share pictures, add friends, and keep everything connected in one place.</p>
+      <div class="hero__badge">Your personal hub</div>
+      <h1>Conjigul<span class="hero__dot">.</span></h1>
+      <p class="hero__tagline">Share memories, keep in touch, stay connected &mdash; all in one place.</p>
       <div class="actions">
-        <a class="button" href="#add-picture">Add a Picture</a>
-        <a class="button button--secondary" href="#add-friend">Add a Friend</a>
+        <a class="button" href="#add-picture">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Add a Picture
+        </a>
+        <a class="button button--secondary" href="#add-friend">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3"/><path d="M21 21v-2c0-1.66-1.34-3-3-3h-.5"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          Add a Friend
+        </a>
       </div>
     </div>
+    <div class="hero__stats" id="hero-stats" aria-live="polite"></div>
   </header>
 
   <main class="layout">
     <section id="add-picture" class="card">
       <div class="card__header">
-        <h2>Add a Picture</h2>
-        <p>Select an image, add a title, and it will appear in your gallery.</p>
+        <div class="card__icon card__icon--purple">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <h2>Add a Picture</h2>
+          <p>Select an image, add a title, and it appears in your gallery.</p>
+        </div>
       </div>
       <form id="add-picture-form" class="form" autocomplete="off">
         <label class="form__field">
-          <span>Title</span>
+          <span class="form__label">Title</span>
           <input type="text" id="picture-title" name="title" placeholder="Sunset at the beach" required>
         </label>
         <label class="form__field">
-          <span>Choose Image</span>
-          <input type="file" id="picture-file" name="file" accept="image/*" required>
+          <span class="form__label">Choose Image</span>
+          <div class="file-drop" id="file-drop">
+            <input type="file" id="picture-file" name="file" accept="image/*" required>
+            <div class="file-drop__inner" id="file-drop-inner">
+              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Drop image here or <strong>browse</strong></span>
+              <small>PNG, JPG, GIF, WebP</small>
+            </div>
+          </div>
         </label>
         <div class="form__actions">
-          <button type="submit" class="button">Save Picture</button>
+          <button type="submit" class="button">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Picture
+          </button>
           <button type="reset" class="button button--ghost">Reset</button>
         </div>
       </form>
     </section>
 
-    <section id="gallery" class="card">
+    <section id="gallery" class="card card--wide">
       <div class="card__header">
-        <h2>Gallery</h2>
-        <p>All pictures you have added appear below.</p>
+        <div class="card__icon card__icon--blue">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>
+        </div>
+        <div>
+          <h2>Gallery</h2>
+          <p>All your pictures in one beautiful view.</p>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <svg class="search-wrap__icon" aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="gallery-search" class="search-input" placeholder="Search by title..." aria-label="Search pictures by title">
       </div>
       <div id="gallery-grid" class="grid"></div>
     </section>
 
     <section id="add-friend" class="card">
       <div class="card__header">
-        <h2>Add a Friend</h2>
-        <p>Keep track of who matters most and how to reach them.</p>
+        <div class="card__icon card__icon--cyan">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <h2>Add a Friend</h2>
+          <p>Keep track of who matters and how to reach them.</p>
+        </div>
       </div>
       <form id="add-friend-form" class="form" autocomplete="off">
         <label class="form__field">
-          <span>Name</span>
+          <span class="form__label">Name</span>
           <input type="text" id="friend-name" name="name" placeholder="Jordan Doe" required>
         </label>
         <label class="form__field">
-          <span>Contact (email or phone)</span>
+          <span class="form__label">Contact (email or phone)</span>
           <input type="text" id="friend-contact" name="contact" placeholder="jordan@example.com" required>
         </label>
         <label class="form__field">
-          <span>Notes</span>
+          <span class="form__label">Notes</span>
           <textarea id="friend-notes" name="notes" placeholder="Met at the conference..."></textarea>
         </label>
         <div class="form__actions">
-          <button type="submit" class="button button--secondary">Save Friend</button>
+          <button type="submit" class="button button--secondary">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+            Save Friend
+          </button>
           <button type="reset" class="button button--ghost">Reset</button>
         </div>
       </form>
@@ -75,16 +116,23 @@
 
     <section id="friends" class="card">
       <div class="card__header">
-        <h2>Friends List</h2>
-        <p>Everyone you have added shows up here.</p>
+        <div class="card__icon card__icon--green">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <h2>Friends List</h2>
+          <p>Everyone you have added shows up here.</p>
+        </div>
       </div>
       <div id="friend-list" class="list"></div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>All links and buttons are ready to use. Save, view, and manage your community with ease.</p>
+    <p>Conjigul &mdash; Your data stays on your device, always.</p>
   </footer>
+
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
   <script src="app.js"></script>
 </body>
