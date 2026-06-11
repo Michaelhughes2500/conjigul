@@ -42,10 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       fileDrop.classList.remove("drag-over");
       if (e.dataTransfer && e.dataTransfer.files.length) {
+        const dropped = e.dataTransfer.files[0];
+        if (!dropped.type.startsWith("image/")) {
+          showToast("Only image files are allowed.", "error");
+          return;
+        }
         const dt = new DataTransfer();
-        dt.items.add(e.dataTransfer.files[0]);
+        dt.items.add(dropped);
         fileInput.files = dt.files;
-        updateDropLabel(fileDrop, e.dataTransfer.files[0].name);
+        updateDropLabel(fileDrop, dropped.name);
       }
     });
     fileInput.addEventListener("change", () => {
