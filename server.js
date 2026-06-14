@@ -28,7 +28,7 @@ app.use(limiter);
 app.use(express.static(publicDir, { maxAge: "1h" }));
 
 app.use((req, res) => {
-  if (req.path.includes(".")) {
+  if (/\.\w+$/.test(req.path)) {
     res.status(404).end();
     return;
   }
