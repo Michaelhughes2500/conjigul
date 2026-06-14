@@ -27,7 +27,11 @@ const limiter = rateLimit({
 app.use(limiter);
 app.use(express.static(publicDir, { maxAge: "1h" }));
 
-app.use((_req, res) => {
+app.use((req, res) => {
+  if (req.path.includes(".")) {
+    res.status(404).end();
+    return;
+  }
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
