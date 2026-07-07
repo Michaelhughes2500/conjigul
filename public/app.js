@@ -156,7 +156,9 @@ function getInitials(name) {
 function updateDropLabel(fileDrop, fileName) {
   fileDrop.classList.add("has-file");
   const span = fileDrop.querySelector(".file-drop__inner span");
-  if (span) span.textContent = escapeHtml(fileName);
+  // textContent is already XSS-safe on its own — escaping here would
+  // double-escape special characters (e.g. "&" would show as "&amp;").
+  if (span) span.textContent = fileName;
 }
 
 /* ── Render helpers ────────────────────────────────────────────────── */
@@ -251,7 +253,7 @@ function renderFriends() {
         </div>
       </div>
       ${friend.notes ? `<p class="chip__notes">${escapeHtml(friend.notes)}</p>` : ""}
-      <div class="chip__footer" style="justify-content: space-between; align-items: center;">
+      <div class="chip__footer">
         <span class="chip__date">Added ${formatDate(friend.createdAt)}</span>
         <button class="button button--danger" data-id="${escapeHtml(friend.id)}" data-type="friend" aria-label="Remove ${escapeHtml(friend.name)}">Remove</button>
       </div>
