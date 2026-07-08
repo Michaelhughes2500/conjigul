@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrations &mdash; Conjigul</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="integrations.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="hero__badge">Connect your tools</div>
+      <h1>Integrations<span class="hero__dot">.</span></h1>
+      <p class="hero__tagline">Link your Google account so Conjigul can share pictures and friends into the apps you already use.</p>
+      <div class="actions">
+        <a class="button button--ghost" href="/">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          Back to hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout integrations-main">
+    <div id="status" class="integrations-status" role="status" aria-live="polite"></div>
+    <section class="integrations-grid card--wide" id="integrationsGrid" aria-label="Available integrations"></section>
+  </main>
+
+  <footer class="footer">
+    <p>Conjigul &mdash; Tokens are stored locally in your browser only.</p>
+  </footer>
+
+  <script src="integrations.js" defer></script>
+</body>
+</html>

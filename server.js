@@ -3,6 +3,8 @@ const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
+const integrationsRouter = require("./routes/integrations");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const publicDir = path.join(__dirname, "public");
@@ -25,6 +27,21 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
+app.use(express.json({ limit: "32kb" }));
+
+app.use("/api/integrations", integrationsRouter);
+
+app.get("/integrations", (_req, res) => {
+  res.sendFile(path.join(publicDir, "integrations.html"), {
+    headers: { "Cache-Control": "no-cache, no-store, must-revalidate" },
+  });
+});
+app.get("/integrations/callback", (_req, res) => {
+  res.sendFile(path.join(publicDir, "integrations-callback.html"), {
+    headers: { "Cache-Control": "no-cache, no-store, must-revalidate" },
+  });
+});
+
 app.use(express.static(publicDir, { maxAge: "1h" }));
 
 app.use((req, res) => {
