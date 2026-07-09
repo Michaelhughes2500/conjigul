@@ -1,5 +1,6 @@
 const pictureKey = "conjigul:pictures";
 const friendsKey = "conjigul:friends";
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB — keep localStorage quota healthy
 
 let pictureForm, friendForm, galleryGrid, friendList, heroStats;
 let state = { pictures: [], friends: [] };
@@ -22,9 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Gallery search — wired to the static <input> in markup
   const searchInput = document.getElementById("gallery-search");
+  const searchClear = document.getElementById("gallery-search-clear");
   if (searchInput) {
+    searchTerm = searchInput.value;
+    if (searchClear) searchClear.hidden = searchTerm.length === 0;
     searchInput.addEventListener("input", (e) => {
       searchTerm = e.target.value;
+      if (searchClear) searchClear.hidden = searchTerm.length === 0;
+      renderGallery();
+    });
+  }
+  if (searchClear && searchInput) {
+    searchClear.addEventListener("click", () => {
+      searchInput.value = "";
+      searchTerm = "";
+      searchClear.hidden = true;
+      searchInput.focus();
       renderGallery();
     });
   }
@@ -45,6 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const dropped = e.dataTransfer.files[0];
         if (!dropped.type.startsWith("image/")) {
           showToast("Only image files are allowed.", "error");
+          return;
+        }
+        if (dropped.size > MAX_IMAGE_BYTES) {
+          showToast("Image is too large — please use a file under 5 MB.", "error");
           return;
         }
         const dt = new DataTransfer();
@@ -158,6 +176,8 @@ function updateDropLabel(fileDrop, fileName) {
   const span = fileDrop.querySelector(".file-drop__inner span");
   // textContent is already XSS-safe on its own — escaping here would
   // double-escape special characters (e.g. "&" would show as "&amp;").
+  // textContent is already XSS-safe — escaping here would double-escape
+  // entities and show literal "&amp;" etc. for filenames with special chars.
   if (span) span.textContent = fileName;
 }
 
@@ -293,6 +313,11 @@ async function handlePictureSubmit(event) {
 
   if (!file.type.startsWith("image/")) {
     showToast("Only image files are allowed.", "error");
+    return;
+  }
+
+  if (file.size > MAX_IMAGE_BYTES) {
+    showToast("Image is too large — please use a file under 5 MB.", "error");
     return;
   }
 

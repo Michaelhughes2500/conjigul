@@ -494,7 +494,7 @@ a {
 
 .search-input {
   width: 100%;
-  padding: 11px 14px 11px 38px;
+  padding: 11px 38px 11px 38px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--panel);
@@ -513,6 +513,34 @@ a {
 .search-input:focus {
   border-color: var(--cyan);
   box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.18);
+}
+
+.search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-wrap__clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--subtle);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.search-wrap__clear:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
 }
 
 /* ── Gallery grid ──────────────────────────────────────────────────── */
