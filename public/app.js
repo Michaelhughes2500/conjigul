@@ -174,6 +174,8 @@ function getInitials(name) {
 function updateDropLabel(fileDrop, fileName) {
   fileDrop.classList.add("has-file");
   const span = fileDrop.querySelector(".file-drop__inner span");
+  // textContent is already XSS-safe on its own — escaping here would
+  // double-escape special characters (e.g. "&" would show as "&amp;").
   // textContent is already XSS-safe — escaping here would double-escape
   // entities and show literal "&amp;" etc. for filenames with special chars.
   if (span) span.textContent = fileName;
