@@ -1,5 +1,6 @@
 const pictureKey = "conjigul:pictures";
 const friendsKey = "conjigul:friends";
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB — keep localStorage quota healthy
 
 let pictureForm, friendForm, galleryGrid, friendList, heroStats;
 let state = { pictures: [], friends: [] };
@@ -22,9 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Gallery search — wired to the static <input> in markup
   const searchInput = document.getElementById("gallery-search");
+  const searchClear = document.getElementById("gallery-search-clear");
   if (searchInput) {
+    searchTerm = searchInput.value;
+    if (searchClear) searchClear.hidden = searchTerm.length === 0;
     searchInput.addEventListener("input", (e) => {
       searchTerm = e.target.value;
+      if (searchClear) searchClear.hidden = searchTerm.length === 0;
+      renderGallery();
+    });
+  }
+  if (searchClear && searchInput) {
+    searchClear.addEventListener("click", () => {
+      searchInput.value = "";
+      searchTerm = "";
+      searchClear.hidden = true;
+      searchInput.focus();
       renderGallery();
     });
   }
@@ -45,6 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const dropped = e.dataTransfer.files[0];
         if (!dropped.type.startsWith("image/")) {
           showToast("Only image files are allowed.", "error");
+          return;
+        }
+        if (dropped.size > MAX_IMAGE_BYTES) {
+          showToast("Image is too large — please use a file under 5 MB.", "error");
           return;
         }
         const dt = new DataTransfer();
@@ -156,7 +174,9 @@ function getInitials(name) {
 function updateDropLabel(fileDrop, fileName) {
   fileDrop.classList.add("has-file");
   const span = fileDrop.querySelector(".file-drop__inner span");
-  if (span) span.textContent = escapeHtml(fileName);
+  // textContent is already XSS-safe — escaping here would double-escape
+  // entities and show literal "&amp;" etc. for filenames with special chars.
+  if (span) span.textContent = fileName;
 }
 
 /* ── Render helpers ────────────────────────────────────────────────── */
@@ -251,7 +271,7 @@ function renderFriends() {
         </div>
       </div>
       ${friend.notes ? `<p class="chip__notes">${escapeHtml(friend.notes)}</p>` : ""}
-      <div class="chip__footer" style="justify-content: space-between; align-items: center;">
+      <div class="chip__footer">
         <span class="chip__date">Added ${formatDate(friend.createdAt)}</span>
         <button class="button button--danger" data-id="${escapeHtml(friend.id)}" data-type="friend" aria-label="Remove ${escapeHtml(friend.name)}">Remove</button>
       </div>
@@ -291,6 +311,11 @@ async function handlePictureSubmit(event) {
 
   if (!file.type.startsWith("image/")) {
     showToast("Only image files are allowed.", "error");
+    return;
+  }
+
+  if (file.size > MAX_IMAGE_BYTES) {
+    showToast("Image is too large — please use a file under 5 MB.", "error");
     return;
   }
 
